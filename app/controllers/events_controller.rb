@@ -5,4 +5,8 @@ class EventsController < ApplicationController
     @age = rand(100)
     @events = Event.all
   end
+
+  def show
+    @event = Event.find(params[:id])
+  end
 end
