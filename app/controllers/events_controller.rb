@@ -16,7 +16,11 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.save
-    redirect_to event_path(@event)
+    unless @event.errors.any? 
+      redirect_to event_path(@event)
+    else
+
+    end
   end
 
   def edit
@@ -25,7 +29,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-
+    logger.info("Updating #{@event.name}")
     @event.update(event_params)
 
     redirect_to event_path(@event)
@@ -42,6 +46,6 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event)
-          .permit(:name, :description, :location, :price, :starts_at)
+          .permit(:name, :description, :location, :price, :starts_at, :capacity, :image_file_name)
   end
 end

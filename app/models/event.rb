@@ -1,6 +1,17 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
+
+  validates :name, :description, :location, presence: true
+
+  validates :description, length: { minimum: 25 }
+
+  vlidates :price, numericality: { greater_than_or_equal_to: 0 }
+
+  validates :capacity, numericality: { only_integer: true, greater_than: 0 }
+
+  validates :image_file_name, format: { with: /\w+\.(jpg|png)\z/i, message: "Must be a valid JPG or PNG image" }
+
   def free?
     price.blank? || price.zero?
   end
