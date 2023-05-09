@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
-
   validates :name, :description, :location, presence: true
 
   validates :description, length: { minimum: 25 }
@@ -10,13 +9,13 @@ class Event < ApplicationRecord
 
   validates :capacity, numericality: { only_integer: true, greater_than: 0 }
 
-  validates :image_file_name, format: { with: /\w+\.(jpg|png)\z/i, message: "Must be a valid JPG or PNG image" }
+  validates :image_file_name, format: { with: /\w+\.(jpg|png)\z/i, message: 'Must be a valid JPG or PNG image' }
 
   def free?
     price.blank? || price.zero?
   end
 
   def self.upcoming
-    where("starts_at > ?", Time.now).order("starts_at")
+    where('starts_at > ?', Time.now).order('starts_at')
   end
 end
