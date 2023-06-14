@@ -14,7 +14,7 @@ class Registration < ApplicationRecord
     'Web Search',
     'Friend/Coworker',
     'Other'
-  ]
+  ].freeze
 
-  validates :how_heard, inclusion: { in: HOW_HEARD_OPTIONS}
+  validates :how_heard, inclusion: { in: HOW_HEARD_OPTIONS }
 end
