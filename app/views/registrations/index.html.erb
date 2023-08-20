@@ -1,0 +1,9 @@
+<h1>Registrations for <%= link_to @event.name, @event %></h1>
+<ul class="registrations">
+  <% @registrations.each do |r| %>
+    <li>
+      <%= link_to r.name, event_registration_path(@event, r) %> - <%= r.how_heard %>
+
+    </li>
+  <% end %>
+<ul>

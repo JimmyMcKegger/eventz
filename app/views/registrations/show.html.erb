@@ -1,0 +1,13 @@
+<h1>Registration for <%= @registration.name %></h1>
+
+
+<div>
+Email: <%= @registration.email %>
+</div>
+
+<div>Heard from: <%= @registration.how_heard %></div>
+
+<div>
+<%= link_to "Delete", event_registration_path, class: "button",
+      data: { turbo_method: :delete, turbo_confirm: "Really?" } %>
+</div>
