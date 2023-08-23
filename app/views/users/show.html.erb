@@ -1,4 +1,9 @@
 <section class="user">
   <h1><%= @user.name %></h1>
   <h2><%= mail_to(@user.email) %></h2>
+
+  <div class="action">
+    <%= link_to "Edit account", edit_user_path(@user), class: "button" %>
+    <%= link_to "Delete account", @user, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button delete"  %>
+  </div>
 </section>
