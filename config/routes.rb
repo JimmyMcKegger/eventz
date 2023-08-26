@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   # singular
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: %i[new create destroy]
 
   resources :users
   get 'signup' => 'users#new'
