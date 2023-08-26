@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    fail
+    session[:user_id] = nil
+    redirect_to events_url, status: :see_other, notice: "You are now signed out!"
   end
 end
