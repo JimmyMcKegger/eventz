@@ -12,6 +12,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @likes = @event.followers
 
+    @categories = @event.categories
+
     return unless current_user
 
     @like = current_user.likes.find_by(event_id: @event.id)
