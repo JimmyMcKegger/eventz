@@ -4,7 +4,6 @@ class RegistrationsController < ApplicationController
   before_action :require_signin
   before_action :set_event
 
-
   def index
     @registrations = @event.registrations.all
   end

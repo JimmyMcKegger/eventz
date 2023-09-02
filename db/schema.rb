@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,47 +12,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_073448) do
-  create_table "events", force: :cascade do |t|
-    t.string "name"
-    t.string "location"
-    t.decimal "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "starts_at"
-    t.text "description"
-    t.string "image_file_name", default: "placeholder.png"
-    t.integer "capacity", default: 1
+ActiveRecord::Schema[7.0].define(version: 20_230_829_073_448) do
+  create_table 'events', force: :cascade do |t|
+    t.string 'name'
+    t.string 'location'
+    t.decimal 'price'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.datetime 'starts_at'
+    t.text 'description'
+    t.string 'image_file_name', default: 'placeholder.png'
+    t.integer 'capacity', default: 1
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.integer "event_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_likes_on_event_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
+  create_table 'likes', force: :cascade do |t|
+    t.integer 'event_id', null: false
+    t.integer 'user_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['event_id'], name: 'index_likes_on_event_id'
+    t.index ['user_id'], name: 'index_likes_on_user_id'
   end
 
-  create_table "registrations", force: :cascade do |t|
-    t.string "how_heard"
-    t.integer "event_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.index ["event_id"], name: "index_registrations_on_event_id"
+  create_table 'registrations', force: :cascade do |t|
+    t.string 'how_heard'
+    t.integer 'event_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'user_id'
+    t.index ['event_id'], name: 'index_registrations_on_event_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "admin", default: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'name'
+    t.string 'email'
+    t.string 'password_digest'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.boolean 'admin', default: false
   end
 
-  add_foreign_key "likes", "events"
-  add_foreign_key "likes", "users"
-  add_foreign_key "registrations", "events"
+  add_foreign_key 'likes', 'events'
+  add_foreign_key 'likes', 'users'
+  add_foreign_key 'registrations', 'events'
 end
