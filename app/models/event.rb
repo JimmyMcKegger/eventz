@@ -24,9 +24,18 @@ class Event < ApplicationRecord
     price.blank? || price.zero?
   end
 
-  def self.upcoming
-    where('starts_at > ?', Time.now).order('starts_at')
-  end
+
+  # def self.past
+  #  where('starts_at < ?', Time.now).order('starts_at')
+  # end
+
+  scope :past, -> { where('starts_at < ?', Time.now).order('starts_at') }
+
+  scope :upcoming, -> { where('starts_at > ?', Time.now).order('starts_at') }
+
+  scope :free, -> { where(price: 0.0).order(:name) }
+
+  scope :recent, ->(max=3) { past.limit(max) }
 
   def sold_out?
     (capacity - registrations.size).zero?
