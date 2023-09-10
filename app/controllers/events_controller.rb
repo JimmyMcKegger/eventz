@@ -3,22 +3,21 @@
 class EventsController < ApplicationController
   before_action :require_signin, except: %i[index show]
   before_action :require_admin, except: %i[index show]
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: %i[show edit update destroy]
 
   def index
-    case params[:filter]
-    when "past"
-      @events = Event.past
-    when "free"
-      @events = Event.free
-    when "recent"
-      @events = Event.recent
-    else
-      @events = Event.upcoming
-    end
+    @events = case params[:filter]
+              when 'past'
+                Event.past
+              when 'free'
+                Event.free
+              when 'recent'
+                Event.recent
+              else
+                Event.upcoming
+              end
 
     puts @events.inspect
-
   end
 
   def show
@@ -44,9 +43,7 @@ class EventsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
     logger.info("Updating #{@event.name}")

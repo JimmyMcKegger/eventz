@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
+# typed: true
+
 class Event < ApplicationRecord
+  extend T::Sig
+
   # Callbacks
   before_save :set_slug
 
@@ -12,7 +16,7 @@ class Event < ApplicationRecord
   has_many :categories, through: :categorizations
 
   # Validations
-  validates :name, presence: true, uniqueness: true
+  validates :name, :slug, presence: true, uniqueness: true
   validates :location, presence: true
   validates :description, presence: true, length: { minimum: 25 }
   validates :price, numericality: { greater_than_or_equal_to: 0 }
@@ -23,23 +27,29 @@ class Event < ApplicationRecord
   scope :past, -> { where('starts_at < ?', Time.now).order('starts_at') }
   scope :upcoming, -> { where('starts_at > ?', Time.now).order('starts_at') }
   scope :free, -> { where(price: 0.0).order(:name) }
-  scope :recent, ->(max = 3) { past.limit(max) }
+  scope :recent, ->(max = 3) { last(max) }
 
+  sig { returns(T::Boolean) }
   def free?
-    price.blank? || price.zero?
+    price.blank? || price&.zero?
   end
 
+  sig { returns(T::Boolean) }
   def sold_out?
-    (capacity - registrations.size).zero?
+    (capacity.to_i - registrations.size).zero?
   end
 
+  sig { returns(String) }
   def to_param
-    name.parameterize
+    name&.parameterize
   end
 
   private
 
-  def set_slug
+  sig { params(name: String).returns(String) }
+  def set_slug(name)
     self.slug = name.parameterize
   end
+
+  attr_accessor :slug
 end
