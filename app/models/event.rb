@@ -16,7 +16,7 @@ class Event < ApplicationRecord
   has_many :categories, through: :categorizations
 
   # Validations
-  validates :name, :slug, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
   validates :location, presence: true
   validates :description, presence: true, length: { minimum: 25 }
   validates :price, numericality: { greater_than_or_equal_to: 0 }
