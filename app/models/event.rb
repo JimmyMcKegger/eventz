@@ -44,12 +44,9 @@ class Event < ApplicationRecord
     name&.parameterize
   end
 
-  private
-
   sig { returns(String) }
   def set_slug
     self.slug = name.parameterize
   end
 
-  attr_accessor :slug
 end
