@@ -10,16 +10,21 @@ class RegistrationsController < ApplicationController
 
   def new
     @registration = @event.registrations.new
+    p @event
   end
 
   def create
     @registration = @event.registrations.new(registration_params)
     @registration.user = current_user
-    if @registration.save
-      redirect_to event_registrations_url(@event),
-                  notice: 'Thanks for registering'
-    else
-      render :new, status: :unprocessable_entity
+    begin
+      if @registration.save
+        redirect_to event_registrations_url(@event),
+                    notice: 'Thanks for registering'
+      else
+        render :new, status: :unprocessable_entity
+      end
+    rescue => exception
+      p exception
     end
   end
 
