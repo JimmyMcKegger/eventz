@@ -1,0 +1,108 @@
+{
+ "repo": "none",
+ "sha": "none",
+ "status": "Success",
+ "branch": "none",
+ "timestamp": "1694387468",
+ "uuid": "0xb13f64b44cc5594e-0x12fbc099-0x4acd-0xa266-0x4de1479d7b9f77750x41a7",
+ "metrics": [
+  {
+   "name": "ruby_typer.unknown..run.utilization.minor_faults",
+   "value": 32350
+  },
+  {
+   "name": "ruby_typer.unknown..types.input.modules.total",
+   "value": 1679
+  },
+  {
+   "name": "ruby_typer.unknown..run.utilization.oublock"
+  },
+  {
+   "name": "ruby_typer.unknown..run.utilization.context_switch.involuntary",
+   "value": 1345
+  },
+  {
+   "name": "ruby_typer.unknown..release.build_timestamp",
+   "value": 1693594786
+  },
+  {
+   "name": "ruby_typer.unknown..types.input.classes.total",
+   "value": 11482
+  },
+  {
+   "name": "ruby_typer.unknown..types.input.sends.total",
+   "value": 65
+  },
+  {
+   "name": "ruby_typer.unknown..types.input.methods.typechecked",
+   "value": 9
+  },
+  {
+   "name": "ruby_typer.unknown..types.input.foundmethods.total",
+   "value": 50867
+  },
+  {
+   "name": "ruby_typer.unknown..types.sig.count",
+   "value": 4838
+  },
+  {
+   "name": "ruby_typer.unknown..types.input.files.sigil.true",
+   "value": 234
+  },
+  {
+   "name": "ruby_typer.unknown..types.input.bytes",
+   "value": 11298535
+  },
+  {
+   "name": "ruby_typer.unknown..types.input.sends.typed",
+   "value": 44
+  },
+  {
+   "name": "ruby_typer.unknown..run.utilization.user_time.us",
+   "value": 783019
+  },
+  {
+   "name": "ruby_typer.unknown..run.utilization.system_time.us",
+   "value": 106355
+  },
+  {
+   "name": "ruby_typer.unknown..run.utilization.inblock"
+  },
+  {
+   "name": "ruby_typer.unknown..types.input.untyped.usages",
+   "value": 7
+  },
+  {
+   "name": "ruby_typer.unknown..run.utilization.major_faults",
+   "value": 42
+  },
+  {
+   "name": "ruby_typer.unknown..run.utilization.context_switch.voluntary",
+   "value": 9
+  },
+  {
+   "name": "ruby_typer.unknown..release.build_scm_commit_count",
+   "value": 11000
+  },
+  {
+   "name": "ruby_typer.unknown..types.input.files",
+   "value": 307
+  },
+  {
+   "name": "ruby_typer.unknown..types.input.files.sigil.false",
+   "value": 73
+  },
+  {
+   "name": "ruby_typer.unknown..types.input.singleton_classes.total",
+   "value": 7196
+  },
+  {
+   "name": "ruby_typer.unknown..types.input.methods.total",
+   "value": 55324
+  },
+  {
+   "name": "ruby_typer.unknown..run.utilization.max_rss",
+   "value": 131198976
+  }
+ ]
+}

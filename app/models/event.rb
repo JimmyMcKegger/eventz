@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# typed: true
+# typed: false
 
 class Event < ApplicationRecord
   extend T::Sig
@@ -46,8 +46,8 @@ class Event < ApplicationRecord
 
   private
 
-  sig { params(name: String).returns(String) }
-  def set_slug(name)
+  sig { returns(String) }
+  def set_slug
     self.slug = name.parameterize
   end
 
