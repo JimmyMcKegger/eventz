@@ -23,6 +23,7 @@ class Event < ApplicationRecord
   validates :description, presence: true, length: { minimum: 25 }
   validates :price, numericality: { greater_than_or_equal_to: 0 }
   validates :capacity, numericality: { only_integer: true, greater_than: 0 }
+  validate :acceptable_image
 
   # Scopes
   scope :past, -> { where('starts_at < ?', Time.now).order('starts_at') }
@@ -50,4 +51,14 @@ class Event < ApplicationRecord
     self.slug = name.parameterize
   end
 
+  def acceptable_image
+    return unless main_image.attached?
+
+    errors.add(:main_image, 'is too big') unless main_image.blob.byte_size <= 1.megabyte
+
+    acceptable_types = ['image/jpeg', 'image/png']
+    return if acceptable_types.include?(main_image.content_type)
+
+    errors.add(:main_image, 'must be a JPEG or PNG')
+  end
 end
